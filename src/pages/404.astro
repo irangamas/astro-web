@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Página no encontrada - ServiceClean">
+  <div class="min-h-screen flex items-center justify-center bg-[var(--color-background)]">
+    <div class="text-center px-4">
+      <div class="mb-8">
+        <span class="text-8xl md:text-9xl font-heading font-bold text-[var(--color-primary)]">404</span>
+      </div>
+      <h1 class="text-2xl md:text-3xl font-heading font-bold text-[var(--color-foreground)] mb-4">
+        Página no encontrada
+      </h1>
+      <p class="text-[var(--color-muted-foreground)] mb-8 max-w-md mx-auto">
+        Lo sentimos, la página que busca no existe o ha sido movida.
+      </p>
+      <a href="/" class="btn btn-cta btn-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        Volver al inicio
+      </a>
+    </div>
+  </div>
+</BaseLayout>

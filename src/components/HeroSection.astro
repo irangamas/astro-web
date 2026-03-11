@@ -1,0 +1,122 @@
+---
+const whatsappNumber = '15149784726';
+const whatsappMessage = encodeURIComponent('Bonjour, je souhaite demander une soumission pour des services de nettoyage commercial.');
+const trustIndicators = ['Soumission gratuite', 'Personnel qualifié', 'Produits écologiques'];
+---
+
+<section class="relative min-h-screen flex items-center bg-hero-gradient overflow-hidden">
+  <!-- Background Pattern with Animations -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-20 left-10 w-72 h-72 bg-white rounded-full blur-3xl animate-float"></div>
+    <div class="absolute bottom-20 right-10 w-96 h-96 bg-white rounded-full blur-3xl animate-float" style="animation-delay: 2s;"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-white/5 rounded-full"></div>
+  </div>
+
+  <!-- Grid Pattern Overlay -->
+  <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+  <div class="container-tight relative z-10 pt-28 pb-20 md:pt-32">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <!-- Content -->
+      <div class="text-center lg:text-left">
+        <!-- Badge -->
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white/90 text-sm font-medium mb-6 animate-fade-up">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+            <path d="M5 3v4"></path>
+            <path d="M19 17v4"></path>
+            <path d="M3 5h4"></path>
+            <path d="M17 19h4"></path>
+          </svg>
+          Plus de 17 ans d'expérience
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white leading-tight mb-6 animate-fade-up" style="animation-delay: 100ms;">
+          Nettoyage Commercial
+          <span class="block text-white">Professionnel et Fiable</span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="text-lg md:text-xl text-white/80 mb-8 max-w-xl mx-auto lg:mx-0 animate-fade-up" style="animation-delay: 200ms;">
+          Nous transformons les espaces de travail en environnements impeccables. Service personnalisé pour les entreprises de Montréal et ses environs depuis 2009.
+        </p>
+
+        <!-- Trust Indicators -->
+        <div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-8 animate-fade-up" style="animation-delay: 300ms;">
+          {trustIndicators.map((item) => (
+            <div class="flex items-center gap-2 text-white/90 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-brand-success">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <path d="m9 11 3 3L22 4"></path>
+              </svg>
+              {item}
+            </div>
+          ))}
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-up" style="animation-delay: 400ms;">
+          <a href="#contact" class="btn btn-hero btn-lg group">
+            Demander une Soumission
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-1">
+              <path d="M5 12h14"></path>
+              <path d="m12 5 7 7-7 7"></path>
+            </svg>
+          </a>
+          <a href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`} target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"></path>
+            </svg>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Image/Visual - Desktop only -->
+      <div class="relative hidden lg:block animate-fade-up" style="animation-delay: 500ms;">
+        <div class="relative">
+          <!-- Main Image Container -->
+          <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+            <img
+              src="/assets/banner.jpeg"
+              alt="Équipe de nettoyage professionnel travaillant dans un bureau moderne"
+              class="w-full h-[500px] object-cover"
+              loading="eager"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-[var(--color-primary)]/40 to-transparent"></div>
+          </div>
+
+          <!-- Floating Stats Card with Animation -->
+          <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-[var(--shadow-brand-lg)] animate-float" style="animation-delay: 1s;">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 rounded-xl bg-[var(--color-success)]/10 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--color-success)]">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <path d="m9 11 3 3L22 4"></path>
+                </svg>
+              </div>
+              <div>
+                <div class="text-3xl font-heading font-bold text-[var(--color-primary)]">50+</div>
+                <div class="text-sm text-[var(--color-muted-foreground)]">Clients Satisfaits</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Badge with Animation -->
+          <div class="absolute -top-4 -right-4 bg-[var(--color-success)] text-white rounded-2xl px-6 py-3 shadow-[var(--shadow-brand-lg)] animate-float" style="animation-delay: 2s;">
+            <div class="font-heading font-bold">+17 Ans</div>
+            <div class="text-sm opacity-90">d'Expérience</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Wave -->
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full block" preserveAspectRatio="none" style="height: 80px;">
+      <path d="M0 150L48 130C96 110 192 70 288 50C384 30 480 30 576 45C672 60 768 90 864 105C960 120 1056 120 1152 105C1248 90 1344 60 1392 45L1440 30V150H0Z" fill="white"></path>
+    </svg>
+  </div>
+</section>

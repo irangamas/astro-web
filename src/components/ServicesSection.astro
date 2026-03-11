@@ -1,0 +1,61 @@
+---
+const services = [
+  { icon: '<path d="M10 17v-8"/><path d="M6 17v-5"/><path d="M14 17V3"/><path d="M18 17V9"/>', title: 'Élimination de la Saleté', description: 'Élimination complète de la poussière et des résidus présents dans votre espace commercial.' },
+  { icon: '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>', title: 'Désinfection en Profondeur', description: 'Désinfection exhaustive de toutes les surfaces pour un environnement sain.' },
+  { icon: '<path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/>', title: 'Nettoyage de Tapis', description: 'Service complet de nettoyage et d\'entretien des tapis.' },
+  { icon: '<path d="M20 9V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v3"/><path d="M2 11v5a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v2H6v-2a2 2 0 0 0-4 0Z"/><path d="M4 18v2"/><path d="M20 18v2"/><path d="M12 4v9"/>', title: 'Nettoyage de Meubles', description: 'Service spécialisé de nettoyage de tissus et de tapisserie.' },
+  { icon: '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>', title: 'Planchers de Bois', description: 'Entretien complet : décapage, cirage et polissage des planchers de bois franc.' },
+  { icon: '<rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/>', title: 'Lavage de Vitres', description: 'Nettoyage intérieur et extérieur des fenêtres, lavage à pression des façades.' },
+  { icon: '<path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z"/><path d="M6 18h12"/><path d="M6 14h12"/><rect width="12" height="12" x="6" y="10"/>', title: 'Nettoyage d\'Entrepôts', description: 'Services spécialisés pour les espaces industriels et de stockage.' },
+  { icon: '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/>', title: 'Services Spécialisés', description: 'Autres services de nettoyage et d\'entretien adaptés à vos besoins.' },
+];
+
+---
+
+<section id="services" class="pt-16 md:pt-24 lg:pt-32 pb-0 bg-[var(--color-muted)] relative overflow-hidden">
+  <div class="container-tight relative z-10">
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 scroll-animate">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-[var(--color-success)] mb-3 uppercase">
+        Services
+      </h2>
+      <p class="text-xl md:text-2xl font-heading font-semibold text-[var(--color-primary)] mb-6">
+        Nettoyage Commercial Professionnel
+      </p>
+      <p class="text-lg text-[var(--color-muted-foreground)]">
+        Nous offrons des solutions de nettoyage intégral adaptées aux besoins spécifiques de chaque client, 
+        avec la plus haute qualité et une attention personnalisée.
+      </p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+      {services.map((service, index) => (
+        <div 
+          class="group relative bg-white rounded-2xl p-6 shadow-[var(--shadow-brand-sm)] hover:shadow-[var(--shadow-brand)] transition-all duration-500 hover:-translate-y-1 scroll-animate-scale" 
+          style={`transition-delay: ${index * 75}ms;`}
+        >
+          <!-- Icon -->
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--color-primary)]/10 to-[var(--color-primary)]/20 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--color-primary)]" set:html={service.icon} />
+          </div>
+
+          <!-- Content -->
+          <h3 class="text-lg font-heading font-bold text-[var(--color-foreground)] mb-2 group-hover:text-[var(--color-secondary)] transition-colors">
+            {service.title}
+          </h3>
+          <p class="text-sm text-[var(--color-muted-foreground)] leading-relaxed">
+            {service.description}
+          </p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Bottom Wave (transitioning to Clients section - white) -->
+  <div class="relative mt-16 md:mt-24 lg:mt-32">
+    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full block" preserveAspectRatio="none" style="height: 50px;">
+      <path d="M0 120L48 105C96 90 192 65 288 55C384 45 480 50 576 60C672 70 768 85 864 92C960 99 1056 98 1152 92C1248 86 1344 75 1392 70L1440 65V120H0Z" fill="white"></path>
+    </svg>
+  </div>
+</section>

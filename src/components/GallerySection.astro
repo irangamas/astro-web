@@ -1,0 +1,245 @@
+---
+/**
+ * INSTRUCCIONES PARA AGREGAR VIDEOS:
+ * 
+ * 1. Coloca tus videos en: public/videos/
+ * 2. Coloca los thumbnails en: public/videos/thumbnails/
+ * 3. Formato recomendado: MP4 (H.264) - máximo 10MB por video
+ * 4. Thumbnails: JPG o WebP - 600x450px aproximadamente
+ * 
+ * Para comprimir videos usa HandBrake (gratuito):
+ * - Preset: "Fast 720p30" o "Fast 480p30"
+ * - Esto reducirá el tamaño significativamente
+ */
+
+const galleryItems = [
+  { 
+    type: 'video', 
+    thumbnail: '/videos/thumbnails/video-1.jpg',
+    videoSrc: '/videos/video-1.mp4',
+    title: 'Nettoyage Professionnel', 
+    subtitle: 'Voyez notre processus' 
+  },
+  { 
+    type: 'video', 
+    thumbnail: '/videos/thumbnails/video-2.jpg',
+    videoSrc: '/videos/video-2.mp4',
+    title: 'Nettoyage Commercial', 
+    subtitle: 'Résultats impeccables' 
+  },
+  { 
+    type: 'video', 
+    thumbnail: '/videos/thumbnails/video-3.jpg',
+    videoSrc: '/videos/video-3.mp4',
+    title: 'Stérilisation', 
+    subtitle: 'Processus complet' 
+  },
+  { 
+    type: 'video', 
+    thumbnail: '/videos/thumbnails/video-4.jpg',
+    videoSrc: '/videos/video-4.mp4',
+    title: 'Équipe en Action', 
+    subtitle: 'Nos professionnels' 
+  },
+  { 
+    type: 'photo', 
+    image: '/assets/escuela_1.jpeg', 
+    title: 'Nettoyage Scolaire', 
+    subtitle: 'Espaces sécuritaires' 
+  },
+  { 
+    type: 'photo', 
+    image: '/assets/guarderia_1.webp', 
+    title: 'Garderies', 
+    subtitle: 'Hygiène infantile' 
+  },
+];
+
+const getTypeLabel = (type: string) => {
+  switch(type) {
+    case 'video': return 'Vidéo';
+    case 'before-after': return 'Avant/Après';
+    default: return 'Photo';
+  }
+};
+
+// Icons
+const playIcon = '<polygon points="5 3 19 12 5 21 5 3"/>';
+const cameraIcon = '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/>';
+const arrowRightIcon = '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>';
+---
+
+<section id="multimedia" class="pt-0 pb-0 bg-hero-gradient relative overflow-hidden">
+  <!-- Top Wave (white coming from Clients section) -->
+  <div class="relative">
+    <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full block" preserveAspectRatio="none" style="height: 80px;">
+      <path d="M0 0H1440V70C1440 70 1344 90 1248 105C1152 120 1056 130 960 125C864 120 768 100 672 90C576 80 480 85 384 100C288 115 192 135 96 130C48 127 0 115 0 115V0Z" fill="white"></path>
+    </svg>
+  </div>
+
+
+
+  <div class="container-tight relative z-10 py-16 md:py-20 lg:py-24">
+    <!-- Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16 scroll-animate">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-[var(--color-success)] mb-3 uppercase">
+        Multimédia
+      </h2>
+      <p class="text-xl md:text-2xl font-heading font-semibold text-white mb-6">
+        Voyez Notre Travail en Action
+      </p>
+      <p class="text-lg text-white/70">
+        Images et vidéos réelles de nos services. La meilleure preuve de notre 
+        qualité se trouve dans les résultats que nous livrons à nos clients.
+      </p>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {galleryItems.map((item, index) => (
+        <div 
+          class={`group relative rounded-2xl overflow-hidden cursor-pointer scroll-animate-scale aspect-[4/3] ${item.type === 'video' ? 'video-container' : ''}`}
+          style={`transition-delay: ${index * 100}ms;`}
+          data-video-src={item.type === 'video' ? item.videoSrc : undefined}
+        >
+          <!-- Video Element (hidden until clicked) -->
+          {item.type === 'video' && (
+            <video 
+              class="video-player absolute inset-0 w-full h-full object-contain bg-black z-10 hidden"
+              preload="none"
+              controls
+              playsinline
+              webkit-playsinline="true"
+              x5-playsinline="true"
+            >
+              <source src={item.videoSrc} type="video/mp4" />
+              Votre navigateur ne supporte pas les vidéos HTML5.
+            </video>
+          )}
+
+          <!-- Thumbnail/Image -->
+          <div class="video-thumbnail absolute inset-0">
+            <img
+              src={item.type === 'video' ? item.thumbnail : item.image}
+              alt={item.title}
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+            
+            <!-- Play/View Icon Overlay -->
+            <div class="absolute inset-0 flex items-center justify-center play-button-overlay">
+              <div class={`w-20 h-20 md:w-16 md:h-16 rounded-full bg-white/30 backdrop-blur flex items-center justify-center transition-all duration-300 ${item.type === 'video' ? 'opacity-100 scale-100 active:scale-90' : 'opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100'}`}>
+                {item.type === 'video' ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white ml-1 md:w-8 md:h-8" set:html={playIcon} />
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white" set:html={cameraIcon} />
+                )}
+              </div>
+            </div>
+
+            <!-- Type Badge -->
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full bg-white/90 text-[var(--color-primary)] text-xs font-semibold">
+                {getTypeLabel(item.type)}
+              </span>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="video-info absolute bottom-0 left-0 right-0 p-5 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform z-20">
+            <h3 class="text-lg font-heading font-bold">{item.title}</h3>
+            <p class="text-sm text-white/70">{item.subtitle}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-12">
+      <a 
+        href="#contacto" 
+        class="inline-flex items-center gap-2 px-8 py-4 rounded-full border-2 border-white text-white font-semibold hover:bg-white hover:text-[var(--color-primary)] transition-all duration-300 group"
+      >
+        Voir plus de contenu
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-1" set:html={arrowRightIcon} />
+      </a>
+    </div>
+  </div>
+
+  <!-- Bottom Wave (transitioning to Team section - gray muted) -->
+  <div class="relative">
+    <svg viewBox="0 0 1440 150" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full block" preserveAspectRatio="none" style="height: 80px;">
+      <path d="M0 150L48 130C96 110 192 70 288 50C384 30 480 30 576 45C672 60 768 90 864 105C960 120 1056 120 1152 105C1248 90 1344 60 1392 45L1440 30V150H0Z" fill="hsl(210 33% 95%)"></path>
+    </svg>
+  </div>
+</section>
+
+<script>
+  // Click-to-play video functionality (lazy loading - video only loads on click)
+  document.addEventListener('DOMContentLoaded', () => {
+    const videoContainers = document.querySelectorAll('.video-container');
+    
+    videoContainers.forEach(container => {
+      const thumbnail = container.querySelector('.video-thumbnail');
+      const video = container.querySelector('.video-player') as HTMLVideoElement;
+      const playOverlay = container.querySelector('.play-button-overlay');
+      const videoInfo = container.querySelector('.video-info');
+      
+      if (!thumbnail || !video) return;
+      
+      // Click on thumbnail to play video
+      thumbnail.addEventListener('click', () => {
+        // Hide thumbnail and show video
+        thumbnail.classList.add('hidden');
+        video.classList.remove('hidden');
+        
+        // Hide info overlay when playing
+        if (videoInfo) {
+          videoInfo.classList.add('opacity-0');
+        }
+        
+        // Load and play video
+        video.load();
+        video.play().catch(err => {
+          console.log('Autoplay prevented:', err);
+        });
+      });
+      
+      // When video ends, show thumbnail again
+      video.addEventListener('ended', () => {
+        video.classList.add('hidden');
+        thumbnail.classList.remove('hidden');
+        if (videoInfo) {
+          videoInfo.classList.remove('opacity-0');
+        }
+      });
+      
+      // Pause other videos when one starts playing
+      video.addEventListener('play', () => {
+        videoContainers.forEach(otherContainer => {
+          if (otherContainer !== container) {
+            const otherVideo = otherContainer.querySelector('.video-player') as HTMLVideoElement;
+            if (otherVideo && !otherVideo.paused) {
+              otherVideo.pause();
+            }
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<style>
+  .video-container .video-thumbnail {
+    transition: opacity 0.3s ease;
+  }
+  
+  .video-container .video-info {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .video-player {
+    background: #000;
+  }
+</style>

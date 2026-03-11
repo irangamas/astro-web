@@ -1,0 +1,167 @@
+---
+const navLinks = [
+  { href: '#entreprise', label: 'Notre Entreprise' },
+  { href: '#services', label: 'Services' },
+  { href: '#clients', label: 'Clients' },
+  { href: '#equipe', label: 'Équipe' },
+  { href: '#multimedia', label: 'Multimédia' },
+  { href: '#contact', label: 'Contact' },
+];
+---
+
+<header
+  id="header"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent py-5"
+>
+  <div class="container-tight">
+    <nav class="flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex items-center group -ml-7">
+        <img
+          id="logo-img"
+          src="/assets/logo.png"
+          alt="GAMAS Janitorial Services"
+          class="h-16 md:h-[72px] lg:h-20 w-auto transition-all duration-300 object-contain"
+        />
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-5">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="nav-link font-semibold text-base uppercase tracking-wide whitespace-nowrap transition-colors duration-300 hover:text-secondary relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-secondary after:transition-all after:duration-300 hover:after:w-full text-white/90"
+          >
+            {link.label}
+          </a>
+        ))}
+      </div>
+
+      <!-- CTA Button -->
+      <div class="hidden lg:flex items-center">
+        <a id="cta-btn" href="#contact" class="btn btn-hero btn-sm">
+          Soumission
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="lg:hidden p-2 rounded-lg transition-colors text-white"
+        aria-label="Toggle menu"
+      >
+        <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12"></line>
+          <line x1="4" x2="20" y1="6" y2="6"></line>
+          <line x1="4" x2="20" y1="18" y2="18"></line>
+        </svg>
+        <svg id="close-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 6 6 18"></path>
+          <path d="m6 6 12 12"></path>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="lg:hidden hidden absolute top-full left-0 right-0 bg-white shadow-[var(--shadow-brand-lg)] animate-fade-up">
+      <div class="container-tight py-6 flex flex-col gap-4">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="mobile-nav-link text-[var(--color-foreground)] font-bold text-sm uppercase tracking-wider py-2 hover:text-secondary transition-colors"
+          >
+            {link.label}
+          </a>
+        ))}
+        <a href="#contact" class="btn btn-cta btn-lg mt-4">
+          Soumission Gratuite
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('header');
+  const logoImg = document.getElementById('logo-img');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const ctaBtn = document.getElementById('cta-btn');
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+  let isMenuOpen = false;
+
+  function handleScroll() {
+    const isScrolled = window.scrollY > 20;
+
+    if (isScrolled) {
+      header?.classList.remove('bg-transparent', 'py-5');
+      header?.classList.add('bg-white/95', 'backdrop-blur-lg', 'shadow-[var(--shadow-brand-md)]', 'py-3');
+
+      // Logo más pequeño al hacer scroll
+      logoImg?.classList.remove('h-16', 'md:h-[72px]', 'lg:h-20');
+      logoImg?.classList.add('h-14', 'md:h-16', 'lg:h-[72px]');
+
+      navLinks.forEach(link => {
+        link.classList.remove('text-white/90');
+        link.classList.add('text-[var(--color-foreground)]');
+      });
+
+      ctaBtn?.classList.remove('btn-hero');
+      ctaBtn?.classList.add('btn-cta');
+
+      mobileMenuBtn?.classList.remove('text-white');
+      mobileMenuBtn?.classList.add('text-[var(--color-primary)]');
+    } else {
+      header?.classList.add('bg-transparent', 'py-5');
+      header?.classList.remove('bg-white/95', 'backdrop-blur-lg', 'shadow-[var(--shadow-brand-md)]', 'py-3');
+
+      // Logo más grande cuando está arriba
+      logoImg?.classList.add('h-16', 'md:h-[72px]', 'lg:h-20');
+      logoImg?.classList.remove('h-14', 'md:h-16', 'lg:h-[72px]');
+
+      navLinks.forEach(link => {
+        link.classList.add('text-white/90');
+        link.classList.remove('text-[var(--color-foreground)]');
+      });
+
+      ctaBtn?.classList.add('btn-hero');
+      ctaBtn?.classList.remove('btn-cta');
+
+      mobileMenuBtn?.classList.add('text-white');
+      mobileMenuBtn?.classList.remove('text-[var(--color-primary)]');
+    }
+  }
+
+  function toggleMobileMenu() {
+    isMenuOpen = !isMenuOpen;
+
+    if (isMenuOpen) {
+      mobileMenu?.classList.remove('hidden');
+      menuIcon?.classList.add('hidden');
+      closeIcon?.classList.remove('hidden');
+    } else {
+      mobileMenu?.classList.add('hidden');
+      menuIcon?.classList.remove('hidden');
+      closeIcon?.classList.add('hidden');
+    }
+  }
+
+  function closeMobileMenu() {
+    isMenuOpen = false;
+    mobileMenu?.classList.add('hidden');
+    menuIcon?.classList.remove('hidden');
+    closeIcon?.classList.add('hidden');
+  }
+
+  window.addEventListener('scroll', handleScroll);
+  mobileMenuBtn?.addEventListener('click', toggleMobileMenu);
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+
+  handleScroll();
+</script>

@@ -1,0 +1,90 @@
+---
+const values = [
+  { icon: 'heart-handshake', title: 'Honnêteté', description: 'Transparence totale dans chaque service' },
+  { icon: 'shield', title: 'Responsabilité', description: 'Engagement envers l\'excellence' },
+  { icon: 'clock', title: 'Ponctualité', description: 'Toujours à l\'heure, sans excuses' },
+  { icon: 'leaf', title: 'Écologique', description: 'Produits respectueux de l\'environnement' },
+  { icon: 'award', title: 'Qualité', description: 'Normes supérieures garanties' },
+  { icon: 'users', title: 'Communication', description: 'Contact continu avec les clients' },
+];
+
+const stats = [
+  { value: '+17', label: 'Ans' },
+  { value: '+50', label: 'Clients' },
+  { value: '15+', label: 'Employés' },
+];
+
+const icons: Record<string, string> = {
+  'heart-handshake': '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"/><path d="m18 15-2-2"/><path d="m15 18-2-2"/>',
+  'shield': '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>',
+  'clock': '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>',
+  'leaf': '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>',
+  'award': '<circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>',
+  'users': '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+};
+---
+
+<section id="entreprise" class="pt-16 md:pt-24 lg:pt-32 pb-0 bg-white relative overflow-hidden">
+  <div class="container-tight relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <!-- Content -->
+      <div class="scroll-animate-left">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-[var(--color-success)] mb-3 uppercase">
+          Notre Entreprise
+        </h2>
+        <p class="text-xl md:text-2xl font-heading font-semibold text-[var(--color-primary)] mb-6">
+          Plus de 17 Ans à Créer des Espaces Impeccables
+        </p>
+        <p class="text-lg text-[var(--color-muted-foreground)] mb-6 leading-relaxed">
+          Notre organisation repose sur les principes suivants : <strong class="text-[var(--color-foreground)]">écoute active du client</strong> et intervention rapide, 
+          évaluation et amélioration continue des tâches d'entretien, formation pratique du personnel de nettoyage, 
+          application de méthodes de travail approuvées, utilisation d'équipements de qualité et de produits de nettoyage efficaces.
+        </p>
+        <p class="text-lg text-[var(--color-muted-foreground)] mb-6 leading-relaxed">
+          Notre équipe, composée de <strong class="text-[var(--color-foreground)]">plus de 15 personnes</strong>, est à votre service pour des travaux de jour ou de nuit, 
+          selon la fréquence souhaitée. <strong class="text-[var(--color-foreground)]">Service Ménager GAMAS</strong> est une entreprise active depuis 2009 qui a consolidé 
+          son marché dans les secteurs de Montréal-Ouest, Montréal-Est, ainsi que sur la Rive-Sud et à Laval.
+        </p>
+        <p class="text-lg text-[var(--color-muted-foreground)] mb-8 leading-relaxed">
+          Cette entreprise repose sur des <strong class="text-[var(--color-foreground)]">principes directeurs justes, honnêtes et responsables</strong>, 
+          qui ont permis l'établissement et la croissance de l'organisation.
+        </p>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-3 gap-6">
+          {stats.map((stat) => (
+            <div class="text-center p-4 rounded-2xl bg-[var(--color-muted)]/50">
+              <div class="text-3xl md:text-4xl font-heading font-bold text-[var(--color-primary)] mb-1">{stat.value}</div>
+              <div class="text-sm text-[var(--color-muted-foreground)]">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Values Grid -->
+      <div class="scroll-animate-right">
+        <div class="grid grid-cols-2 gap-4">
+          {values.map((value, index) => (
+            <div
+              class="bg-white rounded-xl p-5 shadow-[var(--shadow-brand-sm)] hover:shadow-[var(--shadow-brand-md)] transition-all duration-300 group"
+              style={`transition-delay: ${index * 100}ms;`}
+            >
+              <div class="w-12 h-12 rounded-xl bg-[var(--color-secondary)]/10 flex items-center justify-center mb-4 group-hover:bg-[var(--color-secondary)] transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--color-secondary)] group-hover:text-white transition-colors" set:html={icons[value.icon]} />
+              </div>
+              <h3 class="font-heading font-semibold text-[var(--color-foreground)] mb-2">{value.title}</h3>
+              <p class="text-sm text-[var(--color-muted-foreground)]">{value.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Wave (transitioning to Services section - gray) -->
+  <div class="relative mt-16 md:mt-24 lg:mt-32">
+    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full block" preserveAspectRatio="none" style="height: 50px;">
+      <path d="M0 120L48 105C96 90 192 65 288 55C384 45 480 50 576 60C672 70 768 85 864 92C960 99 1056 98 1152 92C1248 86 1344 75 1392 70L1440 65V120H0Z" fill="hsl(210 33% 95%)"></path>
+    </svg>
+  </div>
+</section>

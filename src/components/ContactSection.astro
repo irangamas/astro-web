@@ -1,0 +1,169 @@
+---
+const contactInfo = [
+  { icon: '<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>', label: 'Téléphone', value: '(514) 978-4726' },
+  { icon: '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>', label: 'Courriel', value: 'irangamboa@servicemenagergamas.com' },
+];
+
+const trustBadges = ['Réponse en 24h', 'Sans engagement', 'Soumission personnalisée'];
+---
+
+<section id="contact" class="section-padding bg-white relative overflow-hidden">
+  <div class="container-tight relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+      <!-- Content -->
+      <div class="scroll-animate-left">
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-[var(--color-success)] mb-3 uppercase">
+          Contact
+        </h2>
+        <p class="text-xl md:text-2xl font-heading font-semibold text-[var(--color-primary)] mb-6">
+          Demandez Votre Soumission Gratuite
+        </p>
+        <p class="text-lg text-[var(--color-muted-foreground)] mb-8 leading-relaxed">
+          Remplissez le formulaire et vous recevrez une soumission personnalisée en moins de 24 heures. 
+          Sans engagement, sans frais et avec une attention personnalisée.
+        </p>
+
+        <!-- Contact Info -->
+        <div class="space-y-4 mb-8">
+          {contactInfo.map((item) => (
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-[var(--color-secondary)]/10 flex items-center justify-center flex-shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--color-secondary)]" set:html={item.icon} />
+              </div>
+              <div>
+                <div class="text-sm text-[var(--color-muted-foreground)]">{item.label}</div>
+                <div class="font-medium text-[var(--color-foreground)]">{item.value}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="flex flex-wrap gap-4">
+          {trustBadges.map((badge) => (
+            <div class="flex items-center gap-2 text-sm text-[var(--color-muted-foreground)]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--color-success)] flex-shrink-0">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <path d="m9 11 3 3L22 4"></path>
+              </svg>
+              {badge}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="scroll-animate-right">
+        <div class="bg-white rounded-3xl p-8 shadow-[var(--shadow-brand-lg)]">
+          <form id="contact-form" class="space-y-5">
+            <!-- Nom et Entreprise -->
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div class="space-y-2">
+                <label for="nombre" class="label">Nom et Prénom *</label>
+                <input type="text" id="nombre" name="nombre" required placeholder="Jean Tremblay" class="input h-12 rounded-xl" />
+              </div>
+              <div class="space-y-2">
+                <label for="empresa" class="label">Entreprise</label>
+                <input type="text" id="empresa" name="empresa" placeholder="Nom de votre entreprise" class="input h-12 rounded-xl" />
+              </div>
+            </div>
+
+            <!-- Adresse et Ville -->
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div class="space-y-2">
+                <label for="direccion" class="label">Adresse</label>
+                <input type="text" id="direccion" name="direccion" placeholder="123 Rue Exemple" class="input h-12 rounded-xl" />
+              </div>
+              <div class="space-y-2">
+                <label for="ciudad" class="label">Ville</label>
+                <input type="text" id="ciudad" name="ciudad" placeholder="Montréal" class="input h-12 rounded-xl" />
+              </div>
+            </div>
+
+            <!-- Courriel et Téléphone -->
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div class="space-y-2">
+                <label for="email" class="label">Courriel *</label>
+                <input type="email" id="email" name="email" required placeholder="courriel@exemple.com" class="input h-12 rounded-xl" />
+              </div>
+              <div class="flex gap-3">
+                <div class="space-y-2 flex-1">
+                  <label for="telefono" class="label">Téléphone *</label>
+                  <input type="tel" id="telefono" name="telefono" required placeholder="(514) 123-4567" class="input h-12 rounded-xl" />
+                </div>
+                <div class="space-y-2 w-20">
+                  <label for="extension" class="label">Ext.</label>
+                  <input type="text" id="extension" name="extension" placeholder="123" maxlength="6" class="input h-12 rounded-xl" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Détails -->
+            <div class="space-y-2">
+              <label for="detalles" class="label">Détails Supplémentaires</label>
+              <textarea id="detalles" name="detalles" placeholder="Décrivez vos besoins de nettoyage, fréquence souhaitée, taille de l'espace, etc." class="textarea min-h-[120px] rounded-xl resize-none"></textarea>
+            </div>
+
+            <!-- Button -->
+            <div class="pt-4">
+              <button type="submit" class="btn btn-cta w-full h-12 text-base" id="submit-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m22 2-7 20-4-9-9-4Z"></path>
+                  <path d="M22 2 11 13"></path>
+                </svg>
+                Demander une Soumission Gratuite
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import emailjs from '@emailjs/browser';
+
+  // Initialize EmailJS with environment variable
+  const publicKey = import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY;
+  const serviceId = import.meta.env.PUBLIC_EMAILJS_SERVICE_ID;
+  const templateId = import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID;
+
+  emailjs.init(publicKey);
+
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+
+  const defaultBtnHTML = `
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m22 2-7 20-4-9-9-4Z"></path>
+      <path d="M22 2 11 13"></path>
+    </svg>
+    Demander une Soumission Gratuite
+  `;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    if (!submitBtn) return;
+    
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = `
+      <div class="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+      Envoi en cours...
+    `;
+
+    try {
+      await emailjs.sendForm(serviceId, templateId, form);
+      
+      alert('Demande envoyée! Nous vous contacterons dans les prochaines 24 heures.');
+      form.reset();
+    } catch (error) {
+      alert('Erreur lors de l\'envoi. Veuillez réessayer ou nous contacter par téléphone.');
+      console.error('EmailJS error:', error);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = defaultBtnHTML;
+    }
+  });
+</script>

@@ -1,0 +1,205 @@
+---
+const timeline = [
+  { icon: '<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>', year: '2009', title: 'Fondation', description: 'Nous avons commencé avec une vision claire : l\'excellence en nettoyage à Montréal.' },
+  { icon: '<path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>', year: 'Formation', title: 'Formation Continue', description: 'Chaque employé reçoit une formation initiale obligatoire et une mise à jour constante.' },
+  { icon: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/>', year: 'Sélection', title: 'Personnel avec Références', description: 'Processus de sélection rigoureux avec vérification des antécédents et des références.' },
+  { icon: '<path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/>', year: 'Contrôle', title: 'Supervision Constante', description: 'Inspections régulières et évaluations de performance pour garantir la qualité.' },
+  { icon: '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>', year: 'Valeurs', title: 'Éthique Professionnelle', description: 'Intégrité, respect et engagement dans chaque service que nous réalisons.' },
+  { icon: '<circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>', year: 'Aujourd\'hui', title: '+17 Ans de Succès', description: 'Une équipe de plus de 15 professionnels dédiés à l\'excellence.' },
+];
+---
+
+<section id="equipe" class="pt-12 md:pt-24 lg:pt-32 pb-0 bg-[var(--color-muted)] relative overflow-hidden">
+  <div class="container-tight relative z-10 px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-8 md:gap-12 lg:gap-20 items-center">
+      <!-- Content -->
+      <div class="scroll-animate-left w-full overflow-hidden">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-[var(--color-success)] mb-2 md:mb-3 uppercase text-center lg:text-left">
+          Équipe
+        </h2>
+        <p class="text-lg sm:text-xl md:text-2xl font-heading font-semibold text-[var(--color-primary)] mb-4 md:mb-6 text-center lg:text-left">
+          Formation et Professionnalisme
+        </p>
+        <p class="text-base md:text-lg text-[var(--color-muted-foreground)] mb-6 md:mb-8 leading-relaxed text-center lg:text-left">
+          Notre plus grand atout est notre équipe humaine. Plus de 15 professionnels 
+          engagés, avec une formation spécialisée et une supervision continue pour 
+          garantir l'excellence dans chaque service.
+        </p>
+
+        <!-- Stats Row -->
+        <div class="grid grid-cols-3 gap-2 sm:gap-4 mb-6 md:mb-8">
+          <div class="text-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-white shadow-[var(--shadow-brand-sm)]">
+            <div class="text-2xl sm:text-3xl font-heading font-bold text-[var(--color-primary)]">15+</div>
+            <div class="text-xs sm:text-sm text-[var(--color-muted-foreground)]">Professionnels</div>
+          </div>
+          <div class="text-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-white shadow-[var(--shadow-brand-sm)]">
+            <div class="text-2xl sm:text-3xl font-heading font-bold text-[var(--color-secondary)]">100%</div>
+            <div class="text-xs sm:text-sm text-[var(--color-muted-foreground)]">Formés</div>
+          </div>
+          <div class="text-center p-2 sm:p-4 rounded-xl sm:rounded-2xl bg-white shadow-[var(--shadow-brand-sm)]">
+            <div class="text-2xl sm:text-3xl font-heading font-bold text-[var(--color-success)]">24/7</div>
+            <div class="text-xs sm:text-sm text-[var(--color-muted-foreground)]">Disponibles</div>
+          </div>
+        </div>
+
+        <!-- Team Gallery - Horizontal Carousel -->
+        <div class="relative">
+          <!-- Gallery Container -->
+          <div class="team-gallery flex gap-[14px] overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide" id="team-gallery">
+            <!-- Image 1 -->
+            <div class="flex-shrink-0 w-[140px] md:w-[160px] group">
+              <div class="relative aspect-[9/16] rounded-2xl overflow-hidden shadow-[0_4px_15px_rgba(0,0,0,0.1)] transition-all duration-300 group-hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)]">
+                <img src="/assets/equipo_1.jpeg" alt="Équipe professionnelle 1" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              </div>
+            </div>
+            <!-- Image 2 -->
+            <div class="flex-shrink-0 w-[140px] md:w-[160px] group">
+              <div class="relative aspect-[9/16] rounded-2xl overflow-hidden shadow-[0_4px_15px_rgba(0,0,0,0.1)] transition-all duration-300 group-hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)]">
+                <img src="/assets/equipo_2.jpeg" alt="Équipe professionnelle 2" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              </div>
+            </div>
+            <!-- Image 3 -->
+            <div class="flex-shrink-0 w-[140px] md:w-[160px] group">
+              <div class="relative aspect-[9/16] rounded-2xl overflow-hidden shadow-[0_4px_15px_rgba(0,0,0,0.1)] transition-all duration-300 group-hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)]">
+                <img src="/assets/equipo_3.jpeg" alt="Équipe professionnelle 3" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              </div>
+            </div>
+            <!-- Image 4 -->
+            <div class="flex-shrink-0 w-[140px] md:w-[160px] group">
+              <div class="relative aspect-[9/16] rounded-2xl overflow-hidden shadow-[0_4px_15px_rgba(0,0,0,0.1)] transition-all duration-300 group-hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)]">
+                <img src="/assets/equipo_4.jpeg" alt="Équipe professionnelle 4" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              </div>
+            </div>
+            <!-- Image 5 -->
+            <div class="flex-shrink-0 w-[140px] md:w-[160px] group">
+              <div class="relative aspect-[9/16] rounded-2xl overflow-hidden shadow-[0_4px_15px_rgba(0,0,0,0.1)] transition-all duration-300 group-hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)]">
+                <img src="/assets/equipo_5.jpeg" alt="Équipe professionnelle 5" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              </div>
+            </div>
+            <!-- Image 6 -->
+            <div class="flex-shrink-0 w-[140px] md:w-[160px] group">
+              <div class="relative aspect-[9/16] rounded-2xl overflow-hidden shadow-[0_4px_15px_rgba(0,0,0,0.1)] transition-all duration-300 group-hover:shadow-[0_8px_25px_rgba(0,0,0,0.15)]">
+                <img src="/assets/equipo_6.jpeg" alt="Équipe professionnelle 6" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Line Indicators (2 groups of 3 images) -->
+          <div class="flex justify-center gap-2 mt-4" id="gallery-indicators">
+            <button class="gallery-line w-10 h-1 rounded-sm bg-[var(--color-success)] transition-all duration-300" data-index="0"></button>
+            <button class="gallery-line w-10 h-1 rounded-sm bg-gray-300 transition-all duration-300" data-index="1"></button>
+          </div>
+        </div>
+
+        <style>
+          .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+          .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+          }
+        </style>
+
+        <script>
+          document.addEventListener('DOMContentLoaded', () => {
+            const gallery = document.getElementById('team-gallery');
+            const lines = document.querySelectorAll('.gallery-line');
+            if (!gallery) return;
+
+            // Responsive image width: 140px on mobile, 160px on desktop (md: breakpoint = 768px)
+            const isMobile = window.innerWidth < 768;
+            const imageWidth = (isMobile ? 140 : 160) + 14; // width + gap
+            const imagesPerGroup = 3;
+            let currentGroup = 0;
+            const totalGroups = 2;
+
+            function updateIndicators(groupIndex: number) {
+              lines.forEach((line, i) => {
+                if (i === groupIndex) {
+                  line.classList.remove('bg-gray-300');
+                  line.classList.add('bg-[var(--color-success)]');
+                } else {
+                  line.classList.remove('bg-[var(--color-success)]');
+                  line.classList.add('bg-gray-300');
+                }
+              });
+            }
+
+            function scrollToGroup(groupIndex: number) {
+              currentGroup = groupIndex;
+              gallery?.scrollTo({ 
+                left: currentGroup * imagesPerGroup * imageWidth, 
+                behavior: 'smooth' 
+              });
+              updateIndicators(currentGroup);
+            }
+
+            function scrollToNext() {
+              currentGroup++;
+              
+              if (currentGroup >= totalGroups) {
+                currentGroup = 0;
+              }
+              
+              gallery?.scrollTo({ 
+                left: currentGroup * imagesPerGroup * imageWidth, 
+                behavior: 'smooth' 
+              });
+              updateIndicators(currentGroup);
+            }
+
+            // Auto-scroll every 3 seconds
+            setInterval(scrollToNext, 3000);
+
+            // Click on indicators to navigate
+            lines.forEach((line) => {
+              line.addEventListener('click', () => {
+                const index = parseInt(line.getAttribute('data-index') || '0');
+                scrollToGroup(index);
+              });
+            });
+          });
+        </script>
+      </div>
+
+      <!-- Timeline -->
+      <div class="scroll-animate-right w-full overflow-hidden">
+        <div class="relative">
+          <!-- Timeline Line -->
+          <div class="absolute left-5 md:left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[var(--color-secondary)] via-[var(--color-primary)] to-[var(--color-success)]"></div>
+
+          <!-- Timeline Items -->
+          <div class="space-y-5 md:space-y-8">
+            {timeline.map((item, index) => (
+              <div class="relative pl-12 md:pl-16 group" style={`transition-delay: ${index * 100}ms;`}>
+                <!-- Icon -->
+                <div class="absolute left-0 w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-white shadow-[var(--shadow-brand-md)] flex items-center justify-center group-hover:scale-110 transition-transform duration-300 z-10">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--color-secondary)] md:w-6 md:h-6" set:html={item.icon} />
+                </div>
+
+                <!-- Content -->
+                <div class="bg-white rounded-xl md:rounded-2xl p-3 md:p-5 shadow-[var(--shadow-brand-sm)] group-hover:shadow-[var(--shadow-brand-md)] transition-shadow">
+                  <div class="flex items-center gap-2 md:gap-3 mb-1 md:mb-2">
+                    <span class="px-2 md:px-3 py-0.5 md:py-1 rounded-full bg-[var(--color-secondary)]/10 text-[var(--color-secondary)] text-[10px] md:text-xs font-semibold">
+                      {item.year}
+                    </span>
+                    <h3 class="font-heading font-bold text-sm md:text-base text-[var(--color-foreground)]">{item.title}</h3>
+                  </div>
+                  <p class="text-xs md:text-sm text-[var(--color-muted-foreground)]">{item.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Wave (transitioning to Contact section - white) -->
+  <div class="relative mt-10 md:mt-24 lg:mt-32">
+    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full block" preserveAspectRatio="none" style="height: 50px;">
+      <path d="M0 120L48 105C96 90 192 65 288 55C384 45 480 50 576 60C672 70 768 85 864 92C960 99 1056 98 1152 92C1248 86 1344 75 1392 70L1440 65V120H0Z" fill="white"></path>
+    </svg>
+  </div>
+</section>

@@ -1,0 +1,497 @@
+---
+import { Image } from 'astro:assets';
+
+import guarderia1 from '../assets/guarderia_1.webp';
+import guarderia2 from '../assets/guarderia_2.webp';
+import guarderia3 from '../assets/guarderia_3.webp';
+import escuela1 from '../assets/escuela_1.jpeg';
+import escuela2 from '../assets/escuela_2.jpeg';
+import escuela3 from '../assets/escuela_3.jpeg';
+import retiro1 from '../assets/retiro_1.png';
+import retiro2 from '../assets/retiro_2.png';
+import retiro3 from '../assets/retiro_3.jpg';
+import oficina1 from '../assets/oficina_1.jpg';
+import oficina2 from '../assets/oficina_2.jpg';
+import oficina3 from '../assets/oficina_3.jpg';
+import dentista1 from '../assets/dentista_1.webp';
+import dentista2 from '../assets/dentista_2.png';
+import dentista3 from '../assets/dentista_3.webp';
+import comercio1 from '../assets/comercio_1.jpeg';
+import comercio2 from '../assets/comercio_2.jpeg';
+import comercio3 from '../assets/comercio_3.jpeg';
+
+const clients = [
+  { 
+    id: 'garderie', number: '01', title: 'Garderies', 
+    description: 'Espaces sécuritaires et hygiéniques pour les tout-petits.',
+    images: [guarderia1, guarderia2, guarderia3]
+  },
+  { 
+    id: 'ecole', number: '02', title: 'Écoles', 
+    description: 'Environnements propres qui favorisent l\'apprentissage.',
+    images: [escuela1, escuela2, escuela3]
+  },
+  { 
+    id: 'residence', number: '03', title: 'Résidences pour Aînés', 
+    description: 'Soins spéciaux pour les résidents âgés.',
+    images: [retiro1, retiro2, retiro3]
+  },
+  { 
+    id: 'bureau', number: '04', title: 'Bureaux', 
+    description: 'Productivité dans des espaces impeccables.',
+    images: [oficina1, oficina2, oficina3]
+  },
+  { 
+    id: 'clinique', number: '05', title: 'Cliniques Dentaires', 
+    description: 'Stérilisation et nettoyage de haut niveau.',
+    images: [dentista1, dentista2, dentista3]
+  },
+  { 
+    id: 'commerce', number: '06', title: 'Commerces', 
+    description: 'Première impression impeccable pour vos clients.',
+    images: [comercio1, comercio2, comercio3]
+  },
+];
+---
+
+<section id="clients" class="section-padding bg-white relative overflow-hidden">
+  <!-- Header stays contained -->
+  <div class="container-tight relative z-10">
+    <div class="text-center max-w-2xl mx-auto mb-8 scroll-animate">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-[var(--color-success)] mb-3 uppercase">
+        Clients
+      </h2>
+      <p class="text-xl md:text-2xl font-heading font-semibold text-[var(--color-primary)] mb-3">
+        Secteurs qui Nous Font Confiance
+      </p>
+      <p class="text-sm md:text-base text-[var(--color-muted-foreground)]">
+        Sélectionnez un secteur pour en savoir plus.
+      </p>
+    </div>
+
+    <!-- Desktop: Accordion Panels -->
+    <div class="accordion-container hidden lg:flex rounded-2xl overflow-hidden scroll-animate" id="accordion-desktop">
+      {clients.map((client, index) => (
+        <div
+          class={`accordion-panel relative cursor-pointer overflow-hidden ${index === 0 ? 'active' : ''}`}
+          data-panel-index={index}
+          data-panel-id={client.id}
+        >
+          <!-- Carousel Images (3 per panel, crossfade) -->
+          {client.images.map((img, imgIdx) => (
+            <Image
+              src={img}
+              alt={`${client.title} ${imgIdx + 1}`}
+              class={`carousel-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${imgIdx === 0 ? 'opacity-100' : 'opacity-0'}`}
+              data-carousel-index={imgIdx}
+              loading={imgIdx === 0 ? 'eager' : 'lazy'}
+              format="webp"
+              quality={80}
+              width={1200}
+            />
+          ))}
+
+          <!-- Dark Gradient Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10 z-[1]"></div>
+
+          <!-- Panel Number (top-left) -->
+          <span class="panel-number absolute top-4 left-4 z-[2] text-white/70 font-heading font-bold text-sm lg:text-base">
+            {client.number}
+          </span>
+
+          <!-- Active Content (bottom, shown when expanded) -->
+          <div class="panel-content absolute bottom-0 left-0 right-0 z-[2] p-5 lg:p-6">
+            <h3 class="panel-title text-white font-heading font-bold text-lg lg:text-xl mb-1">
+              {client.title}
+            </h3>
+            <p class="panel-desc text-white/80 text-sm leading-relaxed">
+              {client.description}
+            </p>
+            <!-- Carousel Dots -->
+            <div class="carousel-dots flex gap-1.5 mt-3">
+              {client.images.map((_, dotIdx) => (
+                <button
+                  type="button"
+                  class={`dot w-2 h-2 rounded-full transition-all duration-300 ${dotIdx === 0 ? 'bg-white w-5' : 'bg-white/50'}`}
+                  data-dot-index={dotIdx}
+                  aria-label={`Image ${dotIdx + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          <!-- Inactive: Vertical Title (shown when collapsed) -->
+          <div class="panel-vertical-title absolute bottom-6 left-1/2 -translate-x-1/2 z-[2] whitespace-nowrap">
+            <span class="text-white font-heading font-bold text-sm tracking-wider writing-vertical">
+              {client.title}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Mobile: Horizontal Scroll Cards -->
+    <div class="lg:hidden scroll-animate">
+      <div class="mobile-scroll flex gap-4 overflow-x-auto pb-4 -mx-4 px-4 snap-x snap-mandatory" id="mobile-scroll">
+        {clients.map((client, index) => (
+          <div
+            class="mobile-card relative flex-shrink-0 w-[85vw] max-w-[380px] h-[350px] rounded-2xl overflow-hidden snap-center"
+            data-mobile-index={index}
+          >
+            <!-- Carousel Images -->
+            {client.images.map((img, imgIdx) => (
+              <Image
+                src={img}
+                alt={`${client.title} ${imgIdx + 1}`}
+                class={`mobile-carousel-img absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-in-out ${imgIdx === 0 ? 'opacity-100' : 'opacity-0'}`}
+                data-mobile-carousel-index={imgIdx}
+                loading={imgIdx === 0 ? 'eager' : 'lazy'}
+                format="webp"
+                quality={80}
+                width={600}
+              />
+            ))}
+
+            <!-- Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent z-[1]"></div>
+
+            <!-- Number -->
+            <span class="absolute top-3 left-3 z-[2] text-white/60 font-heading font-bold text-xs">
+              {client.number}
+            </span>
+
+            <!-- Content -->
+            <div class="absolute bottom-0 left-0 right-0 z-[2] p-4">
+              <h3 class="text-white font-heading font-bold text-base mb-1">
+                {client.title}
+              </h3>
+              <p class="text-white/75 text-xs leading-relaxed">
+                {client.description}
+              </p>
+              <!-- Mobile Carousel Dots -->
+              <div class="mobile-dots flex gap-1.5 mt-2">
+                {client.images.map((_, dotIdx) => (
+                  <span
+                    class={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${dotIdx === 0 ? 'bg-white w-4' : 'bg-white/40'}`}
+                    data-mobile-dot-index={dotIdx}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <!-- Mobile Scroll Indicators -->
+      <div class="flex justify-center gap-1.5 mt-3" id="mobile-indicators">
+        {clients.map((_, idx) => (
+          <span
+            class={`mobile-indicator w-2 h-2 rounded-full transition-all duration-300 ${idx === 0 ? 'bg-[var(--color-primary)] w-5' : 'bg-[var(--color-primary)]/25'}`}
+            data-indicator-index={idx}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Accordion Panel Layout */
+  .accordion-container {
+    min-height: 600px;
+    height: 650px;
+  }
+
+  .accordion-panel {
+    flex: 1;
+    min-width: 0;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: grayscale(100%);
+  }
+
+  .accordion-panel.active {
+    flex: 5;
+    filter: grayscale(0%);
+  }
+
+  .accordion-panel:not(.active):hover {
+    filter: grayscale(60%) brightness(1.1);
+  }
+
+  /* Panel content transitions */
+  .panel-content {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+    pointer-events: none;
+  }
+
+  .accordion-panel.active .panel-content {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Vertical title for inactive panels */
+  .panel-vertical-title {
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .accordion-panel.active .panel-vertical-title {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .writing-vertical {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
+
+  /* Panel number */
+  .panel-number {
+    transition: opacity 0.3s ease;
+  }
+
+  /* Carousel dots */
+  .carousel-dots {
+    opacity: 0;
+    transition: opacity 0.4s ease 0.35s;
+  }
+
+  .accordion-panel.active .carousel-dots {
+    opacity: 1;
+  }
+
+  /* Mobile scroll */
+  .mobile-scroll {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-card {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  }
+</style>
+
+<script>
+  function initClientsAccordion() {
+    // ─── Desktop Accordion ───
+    const container = document.getElementById('accordion-desktop');
+    if (!container) return;
+
+    const panels = container.querySelectorAll<HTMLElement>('.accordion-panel');
+    let activeIndex = 0;
+    let autoRotateTimer: ReturnType<typeof setInterval> | null = null;
+    let isHovering = false;
+
+    // Carousel state per panel
+    const carouselState: number[] = Array.from({ length: panels.length }, () => 0);
+    const carouselTimers: (ReturnType<typeof setInterval> | null)[] = Array.from({ length: panels.length }, () => null);
+
+    function setActivePanel(index: number) {
+      if (index === activeIndex && panels[index].classList.contains('active')) return;
+
+      // Stop carousel on previous active
+      stopCarousel(activeIndex);
+
+      // Swap active class
+      panels.forEach((p, i) => {
+        if (i === index) {
+          p.classList.add('active');
+        } else {
+          p.classList.remove('active');
+        }
+      });
+
+      activeIndex = index;
+
+      // Reset and start carousel on new active
+      resetCarousel(index);
+      startCarousel(index);
+    }
+
+    // ─── Image Carousel (crossfade) ───
+    function showImage(panelIndex: number, imgIndex: number) {
+      const panel = panels[panelIndex];
+      const images = panel.querySelectorAll<HTMLElement>('.carousel-img');
+      const dots = panel.querySelectorAll<HTMLElement>('.dot');
+
+      images.forEach((img, i) => {
+        img.style.opacity = i === imgIndex ? '1' : '0';
+      });
+
+      dots.forEach((dot, i) => {
+        if (i === imgIndex) {
+          dot.classList.add('bg-white', 'w-5');
+          dot.classList.remove('bg-white/50');
+        } else {
+          dot.classList.remove('bg-white', 'w-5');
+          dot.classList.add('bg-white/50');
+        }
+      });
+
+      carouselState[panelIndex] = imgIndex;
+    }
+
+    function startCarousel(panelIndex: number) {
+      stopCarousel(panelIndex);
+      carouselTimers[panelIndex] = setInterval(() => {
+        const next = (carouselState[panelIndex] + 1) % 3;
+        showImage(panelIndex, next);
+      }, 3000);
+    }
+
+    function stopCarousel(panelIndex: number) {
+      if (carouselTimers[panelIndex]) {
+        clearInterval(carouselTimers[panelIndex]!);
+        carouselTimers[panelIndex] = null;
+      }
+    }
+
+    function resetCarousel(panelIndex: number) {
+      showImage(panelIndex, 0);
+    }
+
+    // ─── Click handlers ───
+    panels.forEach((panel, i) => {
+      panel.addEventListener('click', () => {
+        setActivePanel(i);
+        restartAutoRotate();
+      });
+
+      // Dot click handlers
+      const dots = panel.querySelectorAll<HTMLElement>('.dot');
+      dots.forEach((dot) => {
+        dot.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const dotIndex = parseInt(dot.getAttribute('data-dot-index') || '0', 10);
+          showImage(i, dotIndex);
+          restartAutoRotate();
+          // Restart carousel timer from this image
+          startCarousel(i);
+        });
+      });
+    });
+
+    // ─── Auto-rotate panels every 5s ───
+    function startAutoRotate() {
+      stopAutoRotate();
+      autoRotateTimer = setInterval(() => {
+        if (!isHovering) {
+          const next = (activeIndex + 1) % panels.length;
+          setActivePanel(next);
+        }
+      }, 5000);
+    }
+
+    function stopAutoRotate() {
+      if (autoRotateTimer) {
+        clearInterval(autoRotateTimer);
+        autoRotateTimer = null;
+      }
+    }
+
+    function restartAutoRotate() {
+      stopAutoRotate();
+      startAutoRotate();
+    }
+
+    // Pause on hover
+    container.addEventListener('mouseenter', () => {
+      isHovering = true;
+    });
+
+    container.addEventListener('mouseleave', () => {
+      isHovering = false;
+    });
+
+    // Initialize
+    setActivePanel(0);
+    startAutoRotate();
+
+    // ─── Mobile Carousel ───
+    const mobileScroll = document.getElementById('mobile-scroll');
+    const mobileCards = document.querySelectorAll<HTMLElement>('.mobile-card');
+    const mobileIndicators = document.querySelectorAll<HTMLElement>('.mobile-indicator');
+    const mobileCarouselTimers: (ReturnType<typeof setInterval> | null)[] = Array.from({ length: mobileCards.length }, () => null);
+    const mobileCarouselState: number[] = Array.from({ length: mobileCards.length }, () => 0);
+
+    function showMobileImage(cardIndex: number, imgIndex: number) {
+      const card = mobileCards[cardIndex];
+      if (!card) return;
+      const images = card.querySelectorAll<HTMLElement>('.mobile-carousel-img');
+      const dots = card.querySelectorAll<HTMLElement>('[data-mobile-dot-index]');
+
+      images.forEach((img, i) => {
+        img.style.opacity = i === imgIndex ? '1' : '0';
+      });
+
+      dots.forEach((dot, i) => {
+        if (i === imgIndex) {
+          dot.classList.add('bg-white', 'w-4');
+          dot.classList.remove('bg-white/40');
+        } else {
+          dot.classList.remove('bg-white', 'w-4');
+          dot.classList.add('bg-white/40');
+        }
+      });
+
+      mobileCarouselState[cardIndex] = imgIndex;
+    }
+
+    function startMobileCarousel(cardIndex: number) {
+      stopMobileCarousel(cardIndex);
+      mobileCarouselTimers[cardIndex] = setInterval(() => {
+        const next = (mobileCarouselState[cardIndex] + 1) % 3;
+        showMobileImage(cardIndex, next);
+      }, 3000);
+    }
+
+    function stopMobileCarousel(cardIndex: number) {
+      if (mobileCarouselTimers[cardIndex]) {
+        clearInterval(mobileCarouselTimers[cardIndex]!);
+        mobileCarouselTimers[cardIndex] = null;
+      }
+    }
+
+    // Start carousels for all mobile cards
+    mobileCards.forEach((_, i) => {
+      startMobileCarousel(i);
+    });
+
+    // Scroll indicator updates
+    if (mobileScroll) {
+      mobileScroll.addEventListener('scroll', () => {
+        const scrollLeft = mobileScroll.scrollLeft;
+        const cardWidth = mobileScroll.scrollWidth / mobileCards.length;
+        const currentCard = Math.round(scrollLeft / cardWidth);
+
+        mobileIndicators.forEach((ind, i) => {
+          if (i === currentCard) {
+            ind.classList.add('bg-[var(--color-primary)]', 'w-5');
+            ind.classList.remove('bg-[var(--color-primary)]/25');
+          } else {
+            ind.classList.remove('bg-[var(--color-primary)]', 'w-5');
+            ind.classList.add('bg-[var(--color-primary)]/25');
+          }
+        });
+      });
+    }
+
+    // ─── Cleanup on page navigation (Astro view transitions) ───
+    document.addEventListener('astro:before-swap', () => {
+      stopAutoRotate();
+      carouselTimers.forEach((_, i) => stopCarousel(i));
+      mobileCarouselTimers.forEach((_, i) => stopMobileCarousel(i));
+    });
+  }
+
+  // Run on initial load and after Astro view transitions
+  initClientsAccordion();
+  document.addEventListener('astro:after-swap', initClientsAccordion);
+</script>
